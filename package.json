@@ -18,7 +18,7 @@
     ]
   },
   "scripts": {
-    "start": "parcel watch ./src/index.html --no-hmr & live-server --port=8080 ./dist",
+    "start": "parcel build ./src/index.html && live-server --port=8080 ./dist & parcel watch ./src/index.html --no-hmr",
     "build": "parcel build ./src/index.html"
   },
   "dependencies": {
