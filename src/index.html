@@ -1,10 +1,58 @@
-<html>
-  <head>
-    <title>
-      Whack-A-Mole
-    </title>
+<!DOCTYPE html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>Whack A Mole</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
-    Testing...
+  <body class="grass">
+    <div class="game-container">
+        <section class="row">
+          <div class="hole hole1">
+            <div class="mole"></div>
+          </div>
+          <div class="hole hole2">
+            <div class="mole"></div>
+          </div>
+          <div class="hole hole3">
+            <div class="mole"></div>
+          </div>
+        </section>
+        <section class="row">       
+         <div class="hole hole4">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole5">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole6">
+          <div class="mole"></div>
+        </div>
+      </section>
+      <section class="row">
+        <div class="hole hole7">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole8">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole9">
+          <div class="mole"></div>
+        </div> 
+      </section>
+      <section class="row">
+        <div class="controls-container">
+          <div class="game-controls">
+            <button class="start" data-state="start">Start</button>
+            <button class="stop" disabled="true">Stop</button>
+          </div>
+          <div class="auto"></div>
+          <div class="status">
+            <span class="status-text">Score: <span class="score">0</span></span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="./js/index.js"></script>
   </body>
 </html>
