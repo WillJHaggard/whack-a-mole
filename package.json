@@ -5,15 +5,27 @@
   "repository": "https://github.com/WillJHaggard/whack-a-mole.git",
   "author": "Will Haggard <willjhaggard@gmail.com>",
   "license": "MIT",
+  "modernizr": {
+    "minify": true,
+    "classPrefix": "",
+    "options": [
+      "setClasses",
+      "addTest"
+    ],
+    "feature-detects": [
+      "css/pointerevents",
+      "touchevents"
+    ]
+  },
   "scripts": {
     "start": "parcel watch ./src/index.html --no-hmr & live-server --port=8080 ./dist",
     "build": "parcel build ./src/index.html"
   },
   "dependencies": {
     "autoprefixer": "^9.6.0",
-    "jest": "^24.8.0",
     "live-server": "^1.2.1",
     "parcel-bundler": "^1.12.3",
+    "parcel-plugin-modernizr": "^1.1.4",
     "postcss-modules": "^1.4.1"
   }
 }

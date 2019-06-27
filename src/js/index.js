@@ -1,45 +1,67 @@
-/**
- * Whack-A-Mole
- *
- * organize for simplicity and organization
- * Object composition or class es6 (prototypal) for Game and Timer
- *
- * pseudo-code
- * 1. init state for game
- * 2. build functions that change state
- * 3. build public api that calls state setters
- * 4. attach dom events and handlers
- * 5. build pausable timer
- * 6. initialize together and expose public api for use with buttons
- */
-import { domUtils } from './shared'
-import { HOLE, SCORE, MOLE, START, STOP } from './constants'
+import { START, PLAY, STOP, SCORE, HOLE, HIGH, MOLE, UP } from './constants'
+import { fragments, domUtils, LS } from './shared'
+import Game from './game'
 
-const { getNode, getNodes } = domUtils
+const {
+  getNode,
+  getNodes,
+  removeClass,
+  setContent,
+  editButton,
+  eventType,
+} = domUtils
 
-function render() {
+function attachHandlers() {
+  const EVENT = eventType(document)
+  // fetch necessary nodes
   const els = {
     holes: getNodes(`.${HOLE}`),
     scoreBoard: getNode(`.${SCORE}`),
+    hiScoreBoard: getNode(`.${HIGH}`),
     moles: getNodes(`.${MOLE}`),
     startButton: getNode(`.${START}`),
     stopButton: getNode(`.${STOP}`),
   }
 
-  stopButton.addEventListener('click', e => {
+  const { scoreBoard, hiScoreBoard, startButton, stopButton, moles } = els
+
+  // initial button edit
+  editButton(startButton.childNodes, START, PLAY)
+  editButton(stopButton.childNodes, STOP)
+  setContent(scoreBoard, 0)
+  setContent(hiScoreBoard, parseInt(LS.get('hiScore')))
+
+  // create game and pass in element nodes
+  const game = new Game(els)
+
+  // attach listeners that toggle or call exposed functions from game
+  stopButton.addEventListener(EVENT, e => {
     e.preventDefault()
-    // stop game
+    game.stop()
   })
 
-  startButton.addEventListener('click', function(e) {
+  startButton.addEventListener(EVENT, function(e) {
     e.preventDefault()
 
     return {
-      start: () => {},
-      pause: () => {},
-      resume: () => {},
+      start: () => game.start(),
+      pause: () => game.pause(),
+      resume: () => game.resume(),
     }[this.dataset.state || START]()
   })
+
+  moles.forEach(mole =>
+    mole.addEventListener(EVENT, function(e) {
+      e.preventDefault()
+
+      if (!e.isTrusted) {
+        return
+      }
+
+      game.scoreUp()
+      removeClass(this.parentNode, UP)
+    })
+  )
 }
 
-document.addEventListener('DOMContentLoaded', () => render())
+document.addEventListener('DOMContentLoaded', () => attachHandlers())

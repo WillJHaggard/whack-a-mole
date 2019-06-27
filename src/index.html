@@ -9,50 +9,52 @@
     <div class="game-container">
         <section class="row">
           <div class="hole hole1">
-            <div class="mole"></div>
+            <div class="mole" role="button"></div>
           </div>
           <div class="hole hole2">
-            <div class="mole"></div>
+            <div class="mole" role="button"></div>
           </div>
           <div class="hole hole3">
-            <div class="mole"></div>
+            <div class="mole" role="button"></div>
           </div>
         </section>
         <section class="row">       
          <div class="hole hole4">
-          <div class="mole"></div>
+          <div class="mole" role="button"></div>
         </div>
         <div class="hole hole5">
-          <div class="mole"></div>
+          <div class="mole" role="button"></div>
         </div>
         <div class="hole hole6">
-          <div class="mole"></div>
+          <div class="mole" role="button"></div>
         </div>
       </section>
       <section class="row">
         <div class="hole hole7">
-          <div class="mole"></div>
+          <div class="mole" role="button"></div>
         </div>
         <div class="hole hole8">
-          <div class="mole"></div>
+          <div class="mole" role="button"></div>
         </div>
         <div class="hole hole9">
-          <div class="mole"></div>
+          <div class="mole" role="button"></div>
         </div> 
       </section>
       <section class="row">
         <div class="controls-container">
           <div class="game-controls">
-            <button class="start" data-state="start">Start</button>
-            <button class="stop" disabled="true">Stop</button>
+            <button tabindex="0" class="start" aria-pressed="false" data-state="start">Start <i class="fa fa-play"></i></button>
+            <button tabindex="1" class="stop" aria-pressed="false" disabled="true">Stop <i class="fa fa-stop"></i></button>
           </div>
           <div class="auto"></div>
           <div class="status">
+            <span class="hi-score">Best: <span class="high">0</span></span>
             <span class="status-text">Score: <span class="score">0</span></span>
           </div>
         </div>
       </section>
     </div>
+    
     <script src="./js/index.js"></script>
   </body>
 </html>

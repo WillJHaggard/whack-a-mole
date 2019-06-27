@@ -47,7 +47,7 @@ button:disabled {
 }
 
 i {
-  margin-left: 0.2rem;
+  margin-left: 0.3rem;
 }
 
 .grass {
@@ -69,6 +69,8 @@ i {
 .game-container {
   position: relative;
   z-index: 4;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .row {
@@ -108,6 +110,7 @@ i {
 
 .status {
   margin-bottom: 0.25rem;
+  display: inline-block;
 }
 
 .game-controls,
@@ -117,9 +120,12 @@ i {
 
 .status-text {
   font-size: calc(var(--font-size) + 1px);
+  display: block;
+  margin-top: 1rem;
 }
 
-.score {
+.score,
+.high {
   background: var(--secondary-background);
   padding: 0.2rem 1rem;
   line-height: 1;
