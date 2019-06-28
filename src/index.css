@@ -1,12 +1,5 @@
 :root {
   --background-color: #358626;
-  --repeating-background: repeating-linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.1) 70px,
-    transparent 70px,
-    transparent 140px
-  );
   --secondary-background: rgba(255, 255, 255, 0.2);
   --text-color: #e1e1e1;
   --font-size: 22px;

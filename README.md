@@ -2,6 +2,10 @@
 
 Simple whack-a-mole game in Vanilla JS
 
+## Run `yarn` or `npm i`
+
+This will install the few necessary dependencies.
+
 ## Available Scripts
 
 In the project directory, you can run:
