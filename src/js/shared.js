@@ -29,11 +29,12 @@ export const LS = {
   get: (item = 'hiScore') => {
     if (!window.localStorage) return
 
-    let parsedVal
+    let parsedVal = 0
     try {
       parsedVal = JSON.parse(localStorage.getItem(item))
     } catch (err) {
-      throw err
+      console.error(err)
+      console.warn('Failed to parse prior high score')
     }
 
     return parsedVal
@@ -42,13 +43,17 @@ export const LS = {
     if (!window.localStorage) return
     const [key, val] = Object.entries(item)[0]
 
-    let stringifiedVal
+    let stringifiedVal = false
     try {
       stringifiedVal = JSON.stringify(val)
     } catch (err) {
-      throw err
+      console.error(err)
+      console.warn(`Failed to stringify new high score of ${val}`)
     }
 
-    localStorage.setItem(key, stringifiedVal)
+    // only set if real value as to not overwrite previous value
+    if (stringifiedVal) {
+      localStorage.setItem(key, stringifiedVal)
+    }
   },
 }
